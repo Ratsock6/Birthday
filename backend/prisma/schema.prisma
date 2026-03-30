@@ -36,8 +36,8 @@ model User {
   media             Media[]
   wallMessages      WallMessage[]
   answers           Answer[]
-  killerAssignment  KillerAssignment? @relation("Killer")
-  killerTarget      KillerAssignment? @relation("Target")
+  killerAssignment     KillerAssignment[] @relation("Killer")
+  killerTargetOf       KillerAssignment[] @relation("Target")
   killerParticipations KillerParticipant[]
   refreshTokens     RefreshToken[]
 }
@@ -151,8 +151,8 @@ model KillerMission {
 model KillerAssignment {
   id           String     @id @default(uuid())
   gameId       String
-  killerId     String     @unique
-  targetId     String     @unique
+  killerId     String
+  targetId     String
   missionId    String?
   isEliminated Boolean    @default(false)
   eliminatedAt DateTime?

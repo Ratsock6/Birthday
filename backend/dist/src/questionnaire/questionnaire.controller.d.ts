@@ -5,24 +5,24 @@ export declare class QuestionnaireController {
     constructor(questionnaireService: QuestionnaireService);
     create(dto: CreateQuestionnaireDto): Promise<{
         id: string;
+        createdAt: Date;
         title: string;
         isOpen: boolean;
-        createdAt: Date;
     }>;
     update(id: string, dto: UpdateQuestionnaireDto): Promise<{
         id: string;
+        createdAt: Date;
         title: string;
         isOpen: boolean;
-        createdAt: Date;
     }>;
     remove(id: string): Promise<{
         message: string;
     }>;
     addQuestion(id: string, dto: CreateQuestionDto): Promise<{
-        id: string;
-        text: string;
-        type: import("@prisma/client").$Enums.QuestionType;
         options: string[];
+        id: string;
+        type: import("@prisma/client").$Enums.QuestionType;
+        text: string;
         order: number;
         questionnaireId: string;
     }>;
@@ -60,24 +60,24 @@ export declare class QuestionnaireController {
         };
     } & {
         id: string;
+        createdAt: Date;
         title: string;
         isOpen: boolean;
-        createdAt: Date;
     })[]>;
     findOne(id: string): Promise<{
         questions: {
-            id: string;
-            text: string;
-            type: import("@prisma/client").$Enums.QuestionType;
             options: string[];
+            id: string;
+            type: import("@prisma/client").$Enums.QuestionType;
+            text: string;
             order: number;
             questionnaireId: string;
         }[];
     } & {
         id: string;
+        createdAt: Date;
         title: string;
         isOpen: boolean;
-        createdAt: Date;
     }>;
     submitAnswers(user: {
         sub: string;
@@ -89,23 +89,23 @@ export declare class QuestionnaireController {
     }, questionnaireId: string): Promise<{
         questionnaire: {
             questions: {
-                id: string;
-                text: string;
-                type: import("@prisma/client").$Enums.QuestionType;
                 options: string[];
+                id: string;
+                type: import("@prisma/client").$Enums.QuestionType;
+                text: string;
                 order: number;
                 questionnaireId: string;
             }[];
         } & {
             id: string;
+            createdAt: Date;
             title: string;
             isOpen: boolean;
-            createdAt: Date;
         };
         answers: {
             id: string;
-            questionId: string;
             userId: string;
+            questionId: string;
             value: string;
             answeredAt: Date;
         }[];

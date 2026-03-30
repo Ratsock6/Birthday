@@ -299,8 +299,8 @@ export class KillerService {
 
   async resetGame(gameId: string) {
     await this.prisma.killerGame.update({
-      where: { id: gameId },
-      data: { status: 'IDLE', startedAt: null, finishedAt: null },
+        where: { id: gameId },
+        data: { status: 'IDLE', startedAt: null, finishedAt: null },
     });
     await this.prisma.killerAssignment.deleteMany({ where: { gameId } });
     await this.prisma.eliminationRequest.deleteMany({ where: { gameId } });

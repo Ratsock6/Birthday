@@ -11,14 +11,14 @@ export declare class MediaService {
         };
     } & {
         id: string;
+        userId: string;
+        approved: boolean;
+        type: import("@prisma/client").$Enums.MediaType;
         filename: string;
         originalName: string;
         mimeType: string;
         size: number;
-        type: import("@prisma/client").$Enums.MediaType;
         url: string;
-        approved: boolean;
-        userId: string;
         uploadedAt: Date;
     })[]>;
     upload(userId: string, file: Express.Multer.File): Promise<{
@@ -28,14 +28,14 @@ export declare class MediaService {
         };
     } & {
         id: string;
+        userId: string;
+        approved: boolean;
+        type: import("@prisma/client").$Enums.MediaType;
         filename: string;
         originalName: string;
         mimeType: string;
         size: number;
-        type: import("@prisma/client").$Enums.MediaType;
         url: string;
-        approved: boolean;
-        userId: string;
         uploadedAt: Date;
     }>;
     approve(id: string): Promise<{
@@ -45,14 +45,14 @@ export declare class MediaService {
         };
     } & {
         id: string;
+        userId: string;
+        approved: boolean;
+        type: import("@prisma/client").$Enums.MediaType;
         filename: string;
         originalName: string;
         mimeType: string;
         size: number;
-        type: import("@prisma/client").$Enums.MediaType;
         url: string;
-        approved: boolean;
-        userId: string;
         uploadedAt: Date;
     }>;
     remove(id: string, userId: string, isAdmin: boolean): Promise<{

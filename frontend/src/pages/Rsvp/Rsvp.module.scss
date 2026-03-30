@@ -1,0 +1,64 @@
+@use '../../styles/variables' as *;
+
+.page {
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 8px 0 24px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 16px;
+  border-radius: $border-radius;
+  border: 2px solid $border;
+  background: $bg-card;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: left;
+  width: 100%;
+
+  .icon  { font-size: 26px; }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .label { font-size: 15px; font-weight: 600; color: $text-primary; }
+    .desc  { font-size: 13px; color: $text-secondary; }
+  }
+
+  &--selected-confirmed { border-color: #16A34A; background: #F0FDF4; .label { color: #15803D; } }
+  &--selected-declined  { border-color: #DC2626; background: #FEF2F2; .label { color: #DC2626; } }
+  &--selected-maybe     { border-color: #CA8A04; background: #FFFBEB; .label { color: #B45309; } }
+
+  &:hover { box-shadow: $shadow-md; }
+}
+
+.note {
+  margin-bottom: 24px;
+
+  textarea {
+    resize: none;
+    height: 100px;
+  }
+}
+
+.success {
+  text-align: center;
+  padding: 32px 0;
+
+  .emoji { font-size: 56px; display: block; margin-bottom: 16px; }
+  h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  p  { font-size: 14px; color: $text-secondary; margin-bottom: 24px; }
+}

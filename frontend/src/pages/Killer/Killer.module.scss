@@ -1,0 +1,145 @@
+@use '../../styles/variables' as *;
+
+.page {
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.waiting {
+  text-align: center;
+  padding: 48px 0;
+  .icon  { font-size: 52px; display: block; margin-bottom: 16px; }
+  h2    { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  p     { font-size: 14px; color: $text-secondary; }
+}
+
+.target-card {
+  background: $bg-card;
+  border: 2px solid $blue-primary;
+  border-radius: $border-radius;
+  padding: 24px 20px;
+  text-align: center;
+  margin: 8px 0 16px;
+
+  .label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $text-muted;
+    margin-bottom: 12px;
+  }
+
+  .target-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 4px;
+  }
+
+  .alive-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #16A34A;
+    background: #DCFCE7;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-top: 8px;
+  }
+}
+
+.mission-card {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: $border-radius;
+  padding: 16px;
+  margin-bottom: 20px;
+
+  .mission-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #92400E;
+    margin-bottom: 8px;
+  }
+
+  .mission-text {
+    font-size: 15px;
+    color: #78350F;
+    line-height: 1.5;
+  }
+}
+
+.eliminated {
+  text-align: center;
+  padding: 32px 0;
+  .icon { font-size: 48px; display: block; margin-bottom: 12px; }
+  h2   { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #DC2626; }
+  p    { font-size: 14px; color: $text-secondary; }
+}
+
+.pending-request {
+  background: #FEF2F2;
+  border: 2px solid #FECACA;
+  border-radius: $border-radius;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  .icon  { font-size: 36px; display: block; margin-bottom: 10px; }
+  h3    { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: #DC2626; }
+  p     { font-size: 14px; color: $text-secondary; margin-bottom: 16px; }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.leaderboard {
+  margin-top: 24px;
+
+  .player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: $bg-card;
+    border: 1px solid $border;
+    border-radius: $border-radius-sm;
+    margin-bottom: 8px;
+
+    .name  { font-size: 15px; font-weight: 500; }
+    .alive { font-size: 13px; color: #16A34A; font-weight: 600; }
+    .dead  { font-size: 13px; color: $text-muted; }
+  }
+}
+
+.winner {
+  text-align: center;
+  padding: 32px 0;
+  .icon  { font-size: 56px; display: block; margin-bottom: 12px; }
+  h2    { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .name  { font-size: 18px; color: $blue-primary; font-weight: 600; }
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 16px 0 10px;
+}
+
+.rank {
+  font-size: 14px;
+  font-weight: 700;
+  color: #9CA3AF;
+  min-width: 28px;
+}

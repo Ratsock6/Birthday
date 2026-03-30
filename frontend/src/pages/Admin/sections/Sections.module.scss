@@ -1,0 +1,146 @@
+@use '../../../styles/variables' as *;
+
+.loading { color: $text-muted; font-size: 14px; padding: 20px 0; }
+.empty   { color: $text-muted; font-size: 14px; padding: 12px 0; }
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $border-radius-sm;
+  padding: 12px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statVal   { font-size: 24px; font-weight: 700; color: $blue-primary; }
+.statLabel { font-size: 11px; color: $text-muted; }
+
+.list { display: flex; flex-direction: column; gap: 8px; }
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $border-radius-sm;
+  gap: 10px;
+}
+
+.rowName { font-size: 14px; font-weight: 500; color: $text-primary; }
+.rowSub  { font-size: 12px; color: $text-secondary; margin-top: 2px; }
+
+.form {
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $border-radius;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.formTitle { font-size: 14px; font-weight: 600; color: $text-primary; }
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.sectionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $text-muted;
+  margin-bottom: 8px;
+}
+
+.mediaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mediaItem {
+  position: relative;
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: $border;
+
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+.videoThumb {
+  width: 100%;
+  height: 100%;
+  background: #1F2937;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  span:first-child { font-size: 24px; }
+  span:last-child  { font-size: 11px; color: #9CA3AF; padding: 0 8px; text-align: center; }
+}
+
+.mediaOverlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 6px 8px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.65));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: white;
+
+  button { background: none; border: none; cursor: pointer; font-size: 14px; }
+}
+
+.questionBlock {
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $border-radius;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.questionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.questionText { font-size: 14px; font-weight: 600; color: $text-primary; }
+
+.answers { display: flex; flex-direction: column; gap: 6px; }
+
+.answer {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  padding: 6px 10px;
+  background: $bg-page;
+  border-radius: $border-radius-sm;
+}
+
+.answerUser { font-weight: 600; color: $blue-primary; min-width: 80px; }
+.answerVal  { color: $text-primary; }

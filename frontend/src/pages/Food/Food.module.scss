@@ -1,0 +1,89 @@
+@use '../../styles/variables' as *;
+
+.page {
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 20px 0 10px;
+}
+
+.diets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.diet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border-radius: $border-radius;
+  border: 2px solid $border;
+  background: $bg-card;
+  cursor: pointer;
+  transition: all 0.18s;
+  width: 100%;
+
+  .icon  { font-size: 24px; }
+  .label { font-size: 13px; font-weight: 500; color: $text-primary; text-align: center; }
+
+  &--selected {
+    border-color: $blue-primary;
+    background: $blue-light;
+    .label { color: $blue-primary; }
+  }
+
+  &:hover { box-shadow: $shadow-sm; }
+}
+
+.allergies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.allergy-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid $border;
+  background: $bg-card;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: $text-primary;
+
+  &--selected {
+    background: #FEF9C3;
+    border-color: #CA8A04;
+    color: #92400E;
+  }
+}
+
+.details {
+  margin-bottom: 24px;
+  textarea { resize: none; height: 80px; }
+}
+
+.success {
+  text-align: center;
+  padding: 32px 0;
+  .emoji { font-size: 52px; display: block; margin-bottom: 16px; }
+  h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  p  { font-size: 14px; color: $text-secondary; margin-bottom: 24px; }
+}

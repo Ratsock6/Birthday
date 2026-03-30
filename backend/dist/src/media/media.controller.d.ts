@@ -11,14 +11,14 @@ export declare class MediaController {
         };
     } & {
         id: string;
+        userId: string;
+        approved: boolean;
+        type: import("@prisma/client").$Enums.MediaType;
         filename: string;
         originalName: string;
         mimeType: string;
         size: number;
-        type: import("@prisma/client").$Enums.MediaType;
         url: string;
-        approved: boolean;
-        userId: string;
         uploadedAt: Date;
     })[]>;
     upload(user: {
@@ -30,14 +30,14 @@ export declare class MediaController {
         };
     } & {
         id: string;
+        userId: string;
+        approved: boolean;
+        type: import("@prisma/client").$Enums.MediaType;
         filename: string;
         originalName: string;
         mimeType: string;
         size: number;
-        type: import("@prisma/client").$Enums.MediaType;
         url: string;
-        approved: boolean;
-        userId: string;
         uploadedAt: Date;
     }>;
     approve(id: string): Promise<{
@@ -47,14 +47,14 @@ export declare class MediaController {
         };
     } & {
         id: string;
+        userId: string;
+        approved: boolean;
+        type: import("@prisma/client").$Enums.MediaType;
         filename: string;
         originalName: string;
         mimeType: string;
         size: number;
-        type: import("@prisma/client").$Enums.MediaType;
         url: string;
-        approved: boolean;
-        userId: string;
         uploadedAt: Date;
     }>;
     remove(id: string, user: {

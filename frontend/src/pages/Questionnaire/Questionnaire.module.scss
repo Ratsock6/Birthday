@@ -1,0 +1,149 @@
+@use '../../styles/variables' as *;
+
+.page {
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.qcard {
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $border-radius;
+  padding: 18px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.18s;
+
+  &:hover { border-color: $blue-primary; box-shadow: $shadow-md; }
+
+  .info { display: flex; flex-direction: column; gap: 4px; }
+  .title { font-size: 15px; font-weight: 600; color: $text-primary; }
+  .sub   { font-size: 13px; color: $text-secondary; }
+  .arrow { font-size: 18px; color: $text-muted; flex-shrink: 0; }
+}
+
+.empty {
+  text-align: center;
+  padding: 48px 0;
+  .icon { font-size: 40px; display: block; margin-bottom: 12px; }
+  p { font-size: 14px; color: $text-muted; }
+}
+
+.progress {
+  background: $border;
+  height: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 24px;
+
+  .bar {
+    height: 100%;
+    background: $blue-primary;
+    border-radius: 999px;
+    transition: width 0.3s;
+  }
+}
+
+.counter {
+  font-size: 13px;
+  color: $text-muted;
+  margin-bottom: 8px;
+}
+
+.question {
+  font-size: 18px;
+  font-weight: 600;
+  color: $text-primary;
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.choice {
+  padding: 14px 16px;
+  border-radius: $border-radius-sm;
+  border: 2px solid $border;
+  background: $bg-card;
+  font-size: 15px;
+  color: $text-primary;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s;
+  width: 100%;
+
+  &--selected {
+    border-color: $blue-primary;
+    background: $blue-light;
+    color: $blue-primary;
+    font-weight: 500;
+  }
+
+  &:hover:not(&--selected) { border-color: darken($border, 10%); }
+}
+
+.textarea {
+  textarea {
+    resize: none;
+    height: 120px;
+    width: 100%;
+  }
+  margin-bottom: 24px;
+}
+
+.scale {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  justify-content: space-between;
+}
+
+.scaleBtn {
+  flex: 1;
+  padding: 12px 4px;
+  border-radius: $border-radius-sm;
+  border: 2px solid $border;
+  background: $bg-card;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: $text-primary;
+
+  &--selected {
+    border-color: $blue-primary;
+    background: $blue-primary;
+    color: white;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.success {
+  text-align: center;
+  padding: 48px 0;
+  .icon { font-size: 56px; display: block; margin-bottom: 16px; }
+  h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  p  { font-size: 14px; color: $text-secondary; margin-bottom: 24px; }
+}
