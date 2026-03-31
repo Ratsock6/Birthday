@@ -11,8 +11,7 @@ interface FoodItem {
 }
 
 const DIET_LABEL: Record<string, string> = {
-  NONE: 'Aucun', VEGETARIAN: 'Végétarien', VEGAN: 'Vegan',
-  HALAL: 'Halal', KOSHER: 'Casher', GLUTEN_FREE: 'Sans gluten', OTHER: 'Autre',
+  NONE: 'Aucun', VEGETARIAN: 'Végétarien', GLUTEN_FREE: 'Sans gluten', OTHER: 'Autre',
 };
 
 export default function FoodSection() {
