@@ -15,28 +15,28 @@ interface Result {
 }
 
 const QUESTION_TYPES = [
-  { value: 'TEXT',            label: 'Texte libre'      },
-  { value: 'SINGLE_CHOICE',   label: 'Choix unique'     },
-  { value: 'MULTIPLE_CHOICE', label: 'Choix multiple'   },
-  { value: 'SCALE',           label: 'Échelle 1-10'     },
+  { value: 'TEXT', label: 'Texte libre' },
+  { value: 'SINGLE_CHOICE', label: 'Choix unique' },
+  { value: 'MULTIPLE_CHOICE', label: 'Choix multiple' },
+  { value: 'SCALE', label: 'Échelle 1-10' },
 ];
 
 export default function QuestionnaireSection() {
-  const [list, setList]             = useState<Questionnaire[]>([]);
-  const [selected, setSelected]     = useState<string | null>(null);
-  const [view, setView]             = useState<'questions' | 'results'>('questions');
-  const [questions, setQuestions]   = useState<Question[]>([]);
-  const [results, setResults]       = useState<Result | null>(null);
-  const [newTitle, setNewTitle]     = useState('');
+  const [list, setList] = useState<Questionnaire[]>([]);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [view, setView] = useState<'questions' | 'results'>('questions');
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [results, setResults] = useState<Result | null>(null);
+  const [newTitle, setNewTitle] = useState('');
 
   // Nouveau form question
-  const [qText, setQText]           = useState('');
-  const [qType, setQType]           = useState('TEXT');
-  const [qOptions, setQOptions]     = useState('');
-  const [addingQ, setAddingQ]       = useState(false);
+  const [qText, setQText] = useState('');
+  const [qType, setQType] = useState('TEXT');
+  const [qOptions, setQOptions] = useState('');
+  const [addingQ, setAddingQ] = useState(false);
 
   async function load() {
-    api.get('/questionnaire').then(r => setList(r.data)).catch(() => {});
+    api.get('/questionnaire').then(r => setList(r.data)).catch(() => { });
   }
 
   async function loadQuestions(id: string) {
@@ -110,23 +110,23 @@ export default function QuestionnaireSection() {
     const q = list.find(q => q.id === selected);
     return (
       <div>
-        <button className="btn btn--ghost" style={{marginBottom:16}} onClick={() => setSelected(null)}>
+        <button className="btn btn--ghost" style={{ marginBottom: 16 }} onClick={() => setSelected(null)}>
           ← Retour
         </button>
 
-        <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:16}}>
-          <h2 style={{fontSize:17, fontWeight:700}}>{q?.title}</h2>
-          <div style={{display:'flex', gap:8}}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+          <h2 style={{ fontSize: 17, fontWeight: 700 }}>{q?.title}</h2>
+          <div style={{ display: 'flex', gap: 8 }}>
             <button
               className={`btn ${q?.isOpen ? 'btn--secondary' : 'btn--ghost'}`}
-              style={{width:'auto', padding:'6px 12px', fontSize:12}}
+              style={{ width: 'auto', padding: '6px 12px', fontSize: 12 }}
               onClick={() => toggleOpen(selected, q?.isOpen ?? true)}
             >
               {q?.isOpen ? 'Ouvert' : 'Fermé'}
             </button>
             <button
               className="btn btn--danger"
-              style={{width:'auto', padding:'6px 12px', fontSize:12}}
+              style={{ width: 'auto', padding: '6px 12px', fontSize: 12 }}
               onClick={() => deleteQuestionnaire(selected)}
             >
               🗑️
@@ -135,17 +135,17 @@ export default function QuestionnaireSection() {
         </div>
 
         {/* Onglets questions / résultats */}
-        <div style={{display:'flex', gap:0, borderBottom:'1px solid #E5E7EB', marginBottom:20}}>
+        <div style={{ display: 'flex', gap: 0, borderBottom: '1px solid #E5E7EB', marginBottom: 20 }}>
           {(['questions', 'results'] as const).map(v => (
             <button
               key={v}
               onClick={() => setView(v)}
               style={{
-                padding:'8px 16px', fontSize:13, fontWeight:500,
+                padding: '8px 16px', fontSize: 13, fontWeight: 500,
                 borderBottom: view === v ? '2px solid #3B82F6' : '2px solid transparent',
                 color: view === v ? '#3B82F6' : '#6B7280',
-                background:'none', border:'none', borderBottom: view === v ? '2px solid #3B82F6' : '2px solid transparent',
-                cursor:'pointer'
+                background: 'none', border: 'none',
+                cursor: 'pointer'
               }}
             >
               {v === 'questions' ? '📝 Questions' : '📊 Résultats'}
@@ -157,7 +157,7 @@ export default function QuestionnaireSection() {
         {view === 'questions' && (
           <>
             {/* Formulaire ajout question */}
-            <form onSubmit={addQuestion} className={styles.form} style={{marginBottom:20}}>
+            <form onSubmit={addQuestion} className={styles.form} style={{ marginBottom: 20 }}>
               <p className={styles.formTitle}>Ajouter une question</p>
 
               <div className="input-group">
@@ -181,7 +181,7 @@ export default function QuestionnaireSection() {
                     value={qOptions}
                     onChange={e => setQOptions(e.target.value)}
                     placeholder={"Option A\nOption B\nOption C"}
-                    style={{resize:'none', height:90}}
+                    style={{ resize: 'none', height: 90 }}
                   />
                 </div>
               )}
@@ -195,8 +195,8 @@ export default function QuestionnaireSection() {
             <div className={styles.list}>
               {questions.map((q, i) => (
                 <div key={q.id} className={styles.row}>
-                  <div style={{flex:1}}>
-                    <p className={styles.rowName}>Q{i+1}. {q.text}</p>
+                  <div style={{ flex: 1 }}>
+                    <p className={styles.rowName}>Q{i + 1}. {q.text}</p>
                     <p className={styles.rowSub}>{QUESTION_TYPES.find(t => t.value === q.type)?.label}</p>
                     {q.options.length > 0 && (
                       <p className={styles.rowSub}>{q.options.join(' · ')}</p>
@@ -204,7 +204,7 @@ export default function QuestionnaireSection() {
                   </div>
                   <button
                     onClick={() => deleteQuestion(q.id)}
-                    style={{color:'#DC2626', background:'none', border:'none', cursor:'pointer', fontSize:16, flexShrink:0}}
+                    style={{ color: '#DC2626', background: 'none', border: 'none', cursor: 'pointer', fontSize: 16, flexShrink: 0 }}
                   >
                     🗑️
                   </button>
@@ -249,28 +249,28 @@ export default function QuestionnaireSection() {
   // ─── LISTE ────────────────────────────────────────────────────────────────
   return (
     <div>
-      <form onSubmit={createQ} style={{display:'flex', gap:8, marginBottom:16}}>
+      <form onSubmit={createQ} style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
         <input
-          style={{flex:1, padding:'10px 14px', border:'1px solid #E5E7EB', borderRadius:8, fontSize:14}}
+          style={{ flex: 1, padding: '10px 14px', border: '1px solid #E5E7EB', borderRadius: 8, fontSize: 14 }}
           value={newTitle}
           onChange={e => setNewTitle(e.target.value)}
           placeholder="Titre du questionnaire..."
         />
-        <button className="btn btn--secondary" style={{width:'auto', padding:'10px 16px'}} type="submit">+</button>
+        <button className="btn btn--secondary" style={{ width: 'auto', padding: '10px 16px' }} type="submit">+</button>
       </form>
 
       <div className={styles.list}>
         {list.map(q => (
-          <div key={q.id} className={styles.row} style={{cursor:'pointer'}} onClick={() => setSelected(q.id)}>
+          <div key={q.id} className={styles.row} style={{ cursor: 'pointer' }} onClick={() => setSelected(q.id)}>
             <div>
               <p className={styles.rowName}>{q.title}</p>
               <p className={styles.rowSub}>{q._count.questions} questions</p>
             </div>
-            <div style={{display:'flex', gap:8, alignItems:'center'}}>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <span className={`badge badge--${q.isOpen ? 'green' : 'gray'}`}>
                 {q.isOpen ? 'Ouvert' : 'Fermé'}
               </span>
-              <span style={{color:'#9CA3AF'}}>→</span>
+              <span style={{ color: '#9CA3AF' }}>→</span>
             </div>
           </div>
         ))}
