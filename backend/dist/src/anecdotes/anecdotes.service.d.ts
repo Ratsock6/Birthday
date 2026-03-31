@@ -10,17 +10,17 @@ export declare class AnecdotesService {
         };
     } & {
         id: string;
-        content: string;
-        isTrue: boolean;
         createdAt: Date;
         userId: string;
+        content: string;
+        isTrue: boolean;
     }>;
     findMine(userId: string): Promise<{
         id: string;
-        content: string;
-        isTrue: boolean;
         createdAt: Date;
         userId: string;
+        content: string;
+        isTrue: boolean;
     }[]>;
     findAll(): Promise<({
         user: {
@@ -29,10 +29,10 @@ export declare class AnecdotesService {
         };
     } & {
         id: string;
-        content: string;
-        isTrue: boolean;
         createdAt: Date;
         userId: string;
+        content: string;
+        isTrue: boolean;
     })[]>;
     delete(id: string, userId: string): Promise<{
         message: string;

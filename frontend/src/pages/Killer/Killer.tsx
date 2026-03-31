@@ -32,7 +32,7 @@ export default function Killer() {
   const [leaderboard, setLeaderboard]         = useState<LeaderboardPlayer[]>([]);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [gameStatus, setGameStatus]           = useState<string>('IDLE');
-  const [gameId, setGameId]                   = useState<string | null>(null);
+  
   const [loading, setLoading]                 = useState(true);
   const [eliminating, setEliminating]         = useState(false);
   const [eliminationSent, setEliminationSent] = useState(false);
@@ -47,7 +47,7 @@ export default function Killer() {
 
         const gId = r.data.assignment?.game?.id;
         if (gId) {
-          setGameId(gId);
+          
           const lb = await api.get(`/killer/game/${gId}/leaderboard`);
           setLeaderboard(lb.data.players);
           setShowLeaderboard(lb.data.showLeaderboard);

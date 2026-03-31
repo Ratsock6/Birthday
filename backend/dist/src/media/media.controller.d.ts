@@ -10,6 +10,7 @@ export declare class MediaController {
             displayName: string;
         };
     } & {
+        url: string;
         id: string;
         userId: string;
         approved: boolean;
@@ -18,7 +19,6 @@ export declare class MediaController {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         uploadedAt: Date;
     })[]>;
     upload(user: {
@@ -29,6 +29,7 @@ export declare class MediaController {
             displayName: string;
         };
     } & {
+        url: string;
         id: string;
         userId: string;
         approved: boolean;
@@ -37,7 +38,6 @@ export declare class MediaController {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         uploadedAt: Date;
     }>;
     approve(id: string): Promise<{
@@ -46,6 +46,7 @@ export declare class MediaController {
             displayName: string;
         };
     } & {
+        url: string;
         id: string;
         userId: string;
         approved: boolean;
@@ -54,7 +55,6 @@ export declare class MediaController {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         uploadedAt: Date;
     }>;
     remove(id: string, user: {

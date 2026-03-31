@@ -10,6 +10,7 @@ export declare class MediaService {
             displayName: string;
         };
     } & {
+        url: string;
         id: string;
         userId: string;
         approved: boolean;
@@ -18,7 +19,6 @@ export declare class MediaService {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         uploadedAt: Date;
     })[]>;
     upload(userId: string, file: Express.Multer.File): Promise<{
@@ -27,6 +27,7 @@ export declare class MediaService {
             displayName: string;
         };
     } & {
+        url: string;
         id: string;
         userId: string;
         approved: boolean;
@@ -35,7 +36,6 @@ export declare class MediaService {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         uploadedAt: Date;
     }>;
     approve(id: string): Promise<{
@@ -44,6 +44,7 @@ export declare class MediaService {
             displayName: string;
         };
     } & {
+        url: string;
         id: string;
         userId: string;
         approved: boolean;
@@ -52,7 +53,6 @@ export declare class MediaService {
         originalName: string;
         mimeType: string;
         size: number;
-        url: string;
         uploadedAt: Date;
     }>;
     remove(id: string, userId: string, isAdmin: boolean): Promise<{

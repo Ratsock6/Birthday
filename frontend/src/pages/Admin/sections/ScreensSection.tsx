@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import styles from './Sections.module.scss';
+
 
 export default function ScreensSection() {
   const navigate = useNavigate();

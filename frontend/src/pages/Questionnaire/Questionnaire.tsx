@@ -30,7 +30,7 @@ export default function Questionnaire() {
   const [active, setActive]         = useState<QuestionnaireDetail | null>(null);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers]       = useState<Record<string, string>>({});
-  const [existing, setExisting]     = useState<Record<string, string>>({});
+  
   const [saving, setSaving]         = useState(false);
   const [done, setDone]             = useState(false);
 
@@ -50,7 +50,7 @@ export default function Questionnaire() {
     myAnswers.data.answers?.forEach((a: { questionId: string; value: string }) => {
       map[a.questionId] = a.value;
     });
-    setExisting(map);
+    
     setAnswers(map);
     setCurrentIdx(0);
     setDone(false);

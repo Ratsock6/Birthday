@@ -12,19 +12,19 @@ export declare class AnecdotesController {
         };
     } & {
         id: string;
-        content: string;
-        isTrue: boolean;
         createdAt: Date;
         userId: string;
+        content: string;
+        isTrue: boolean;
     }>;
     findMine(user: {
         sub: string;
     }): Promise<{
         id: string;
-        content: string;
-        isTrue: boolean;
         createdAt: Date;
         userId: string;
+        content: string;
+        isTrue: boolean;
     }[]>;
     findAll(): Promise<({
         user: {
@@ -33,10 +33,10 @@ export declare class AnecdotesController {
         };
     } & {
         id: string;
-        content: string;
-        isTrue: boolean;
         createdAt: Date;
         userId: string;
+        content: string;
+        isTrue: boolean;
     })[]>;
     delete(id: string, user: {
         sub: string;
