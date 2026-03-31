@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+
+.page {
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 0 40px;
+}
+
+.header {
+  padding: 20px 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h1 { font-size: 20px; font-weight: 700; }
+  .logout { font-size: 13px; color: $text-secondary; padding: 6px 12px; border: 1px solid $border; border-radius: $border-radius-sm; background: $bg-card; }
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 16px 0;
+  border-bottom: 1px solid $border;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: $text-secondary;
+  border-radius: $border-radius-sm;
+  border: 1px solid $border;
+  background: $bg-card;
+  transition: all 0.15s;
+  white-space: nowrap;
+  margin-bottom: 8px;
+
+  &--active {
+    color: $blue-primary;
+    border-color: $blue-primary;
+    background: $blue-light;
+  }
+}
+
+.content { padding: 0 16px; }

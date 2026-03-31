@@ -1,0 +1,238 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── USERS ───────────────────────────────────────────────────────────────────
+
+enum Role {
+  ADMIN
+  GUEST
+}
+
+enum RsvpStatus {
+  PENDING
+  CONFIRMED
+  DECLINED
+  MAYBE
+}
+
+model User {
+  id           String   @id @default(uuid())
+  username     String   @unique
+  password     String   // bcrypt hash
+  displayName  String
+  role         Role     @default(GUEST)
+  avatarUrl    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  rsvp              Rsvp?
+  foodRestriction   FoodRestriction?
+  media             Media[]
+  wallMessages      WallMessage[]
+  answers           Answer[]
+  killerAssignment     KillerAssignment[] @relation("Killer")
+  killerTargetOf       KillerAssignment[] @relation("Target")
+  killerParticipations KillerParticipant[]
+  anecdotes Anecdote[]
+  refreshTokens     RefreshToken[]
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── RSVP ────────────────────────────────────────────────────────────────────
+
+model Rsvp {
+  id        String     @id @default(uuid())
+  status    RsvpStatus @default(PENDING)
+  note      String?
+  userId    String     @unique
+  updatedAt DateTime   @updatedAt
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── FOOD RESTRICTIONS ───────────────────────────────────────────────────────
+
+enum DietType {
+  NONE
+  VEGETARIAN
+  VEGAN
+  HALAL
+  KOSHER
+  GLUTEN_FREE
+  OTHER
+}
+
+model FoodRestriction {
+  id         String   @id @default(uuid())
+  diet       DietType @default(NONE)
+  allergies  String[] // ex: ["nuts", "lactose"]
+  details    String?
+  userId     String   @unique
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── MEDIA ───────────────────────────────────────────────────────────────────
+
+enum MediaType {
+  PHOTO
+  VIDEO
+}
+
+model Media {
+  id          String    @id @default(uuid())
+  filename    String
+  originalName String
+  mimeType    String
+  size        Int
+  type        MediaType
+  url         String
+  approved    Boolean   @default(true)
+  userId      String
+  uploadedAt  DateTime  @default(now())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── KILLER ──────────────────────────────────────────────────────────────────
+
+enum GameStatus {
+  IDLE
+  RUNNING
+  FINISHED
+}
+
+enum EliminationStatus {
+  PENDING
+  CONFIRMED
+  REJECTED
+}
+
+model KillerGame {
+  id              String     @id @default(uuid())
+  status          GameStatus @default(IDLE)
+  showLeaderboard Boolean    @default(false)
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  createdAt       DateTime   @default(now())
+  assignments     KillerAssignment[]
+  eliminations    EliminationRequest[]
+  participants    KillerParticipant[]   // ← liste des joueurs sélectionnés
+}
+
+model KillerParticipant {
+  id      String     @id @default(uuid())
+  gameId  String
+  userId  String
+  game    KillerGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  user    User       @relation(fields: [userId], references: [id])
+
+  @@unique([gameId, userId])  // un joueur une seule fois par partie
+}
+
+model KillerMission {
+  id          String  @id @default(uuid())
+  description String
+  isActive    Boolean @default(true)
+  assignments KillerAssignment[]
+}
+
+model KillerAssignment {
+  id           String     @id @default(uuid())
+  gameId       String
+  killerId     String
+  targetId     String
+  missionId    String?
+  isEliminated Boolean    @default(false)
+  eliminatedAt DateTime?
+  game         KillerGame    @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  killer       User          @relation("Killer", fields: [killerId], references: [id])
+  target       User          @relation("Target", fields: [targetId], references: [id])
+  mission      KillerMission? @relation(fields: [missionId], references: [id])
+}
+
+model EliminationRequest {
+  id         String            @id @default(uuid())
+  gameId     String
+  killerId   String
+  targetId   String
+  status     EliminationStatus @default(PENDING)
+  createdAt  DateTime          @default(now())
+  resolvedAt DateTime?
+  game       KillerGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+}
+
+// ─── QUESTIONNAIRE ───────────────────────────────────────────────────────────
+
+enum QuestionType {
+  TEXT
+  SINGLE_CHOICE
+  MULTIPLE_CHOICE
+  SCALE
+}
+
+model Questionnaire {
+  id        String     @id @default(uuid())
+  title     String
+  isOpen    Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  questions Question[]
+}
+
+model Question {
+  id              String        @id @default(uuid())
+  questionnaireId String
+  text            String
+  type            QuestionType  @default(TEXT)
+  options         String[]      // pour SINGLE/MULTIPLE_CHOICE
+  order           Int           @default(0)
+  questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id], onDelete: Cascade)
+  answers         Answer[]
+}
+
+model Answer {
+  id         String   @id @default(uuid())
+  questionId String
+  userId     String
+  value      String   // JSON stringifié pour les types complexes
+  answeredAt DateTime @default(now())
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, userId])
+}
+
+// ─── WALL MESSAGES ────────────────────────────────────────────────────────────
+
+model WallMessage {
+  id        String   @id @default(uuid())
+  content   String
+  approved  Boolean  @default(true) // false = validé par admin avant affichage
+  likes     Int      @default(0)
+  userId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── ANECDOTE ────────────────────────────────────────────────────────────
+
+model Anecdote {
+  id        String   @id @default(uuid())
+  content   String
+  isTrue    Boolean
+  userId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
