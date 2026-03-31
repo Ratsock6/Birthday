@@ -1,0 +1,118 @@
+.screen {
+  min-height: 100dvh;
+  background: #0F172A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  position: relative;
+}
+
+.counter {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+}
+
+.card {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+}
+
+.question {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 24px;
+}
+
+.content {
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 600;
+  color: white;
+  line-height: 1.5;
+  margin-bottom: 48px;
+}
+
+.reveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: fadeIn 0.5s ease;
+}
+
+.author {
+  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  span { color: #60A5FA; font-weight: 700; }
+}
+
+.verdict {
+  font-size: 48px;
+  font-weight: 800;
+  padding: 12px 32px;
+  border-radius: 12px;
+
+  &--true  { background: #166534; color: #86EFAC; }
+  &--false { background: #7F1D1D; color: #FCA5A5; }
+}
+
+.hint {
+  font-size: 15px;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+}
+
+.actions {
+  position: absolute;
+  bottom: 32px;
+  display: flex;
+  gap: 16px;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+
+  &--reveal { background: #3B82F6; color: white; &:hover { background: #2563EB; } }
+  &--next   { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); &:hover { background: rgba(255,255,255,0.15); } }
+  &--skip   { background: transparent; color: rgba(255,255,255,0.4); font-size:13px; &:hover { color: white; } }
+}
+
+.empty {
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 20px;
+}
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+
+  .bar {
+    height: 100%;
+    background: #3B82F6;
+    transition: width 0.4s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

@@ -60,6 +60,7 @@ export default function Dashboard() {
     { id: 'media',  icon: '📸', name: 'Photos',        route: '/media',         status: { label: 'Uploader des souvenirs', variant: '' } },
     { id: 'killer', icon: '🎯', name: 'Killer',        route: '/killer',        status: { label: 'Voir ta cible', variant: '' } },
     { id: 'quiz',   icon: '📝', name: 'Questionnaire', route: '/questionnaire', status: { label: 'Répondre', variant: '' } },
+    { id: 'anecdotes', icon: '🎭', name: 'Anecdotes', route: '/anecdotes', status: { label: 'Vrai ou faux ?', variant: '' } },
   ];
 
   return (

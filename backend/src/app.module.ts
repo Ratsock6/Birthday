@@ -14,6 +14,7 @@ import { WebsocketModule } from './websocket/websocket.module';
 import { KillerModule } from './killer/killer.module';
 import { MediaModule } from './media/media.module';
 import { QuestionnaireModule } from './questionnaire/questionnaire.module';
+import { AnecdotesModule } from './anecdotes/anecdotes.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { QuestionnaireModule } from './questionnaire/questionnaire.module';
     KillerModule,
     MediaModule,
     QuestionnaireModule,
+    AnecdotesModule,
   ],
 })
 export class AppModule {}

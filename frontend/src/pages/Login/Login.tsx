@@ -37,7 +37,7 @@ export default function Login() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className="input-group">
           <label>Ton prénom</label>
-          <input value={username} onChange={e => setUsername(e.target.value)} placeholder="ex: marie" autoCapitalize="none" autoCorrect="off" required />
+          <input value={username} onChange={e => setUsername(e.target.value)} placeholder="ex: antoine" autoCapitalize="none" autoCorrect="off" required />
         </div>
         <div className="input-group">
           <label>Mot de passe</label>

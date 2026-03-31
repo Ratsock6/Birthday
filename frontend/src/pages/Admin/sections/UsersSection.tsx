@@ -40,11 +40,11 @@ export default function UsersSection() {
         <p className={styles.formTitle}>Nouvel invité</p>
         <div className="input-group">
           <label>Prénom affiché</label>
-          <input value={form.displayName} onChange={e => setForm(f => ({...f, displayName: e.target.value}))} placeholder="Marie" required />
+          <input value={form.displayName} onChange={e => setForm(f => ({...f, displayName: e.target.value}))} placeholder="Antoine" required />
         </div>
         <div className="input-group">
           <label>Username (connexion)</label>
-          <input value={form.username} onChange={e => setForm(f => ({...f, username: e.target.value}))} placeholder="marie" required />
+          <input value={form.username} onChange={e => setForm(f => ({...f, username: e.target.value}))} placeholder="antoine" required />
         </div>
         <div className="input-group">
           <label>Mot de passe</label>

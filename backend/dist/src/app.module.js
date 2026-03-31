@@ -22,6 +22,7 @@ const websocket_module_1 = require("./websocket/websocket.module");
 const killer_module_1 = require("./killer/killer.module");
 const media_module_1 = require("./media/media.module");
 const questionnaire_module_1 = require("./questionnaire/questionnaire.module");
+const anecdotes_module_1 = require("./anecdotes/anecdotes.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -48,6 +49,7 @@ exports.AppModule = AppModule = __decorate([
             killer_module_1.KillerModule,
             media_module_1.MediaModule,
             questionnaire_module_1.QuestionnaireModule,
+            anecdotes_module_1.AnecdotesModule,
         ],
     })
 ], AppModule);

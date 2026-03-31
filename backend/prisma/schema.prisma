@@ -39,6 +39,7 @@ model User {
   killerAssignment     KillerAssignment[] @relation("Killer")
   killerTargetOf       KillerAssignment[] @relation("Target")
   killerParticipations KillerParticipant[]
+  anecdotes Anecdote[]
   refreshTokens     RefreshToken[]
 }
 
@@ -220,6 +221,17 @@ model WallMessage {
   content   String
   approved  Boolean  @default(true) // false = validé par admin avant affichage
   likes     Int      @default(0)
+  userId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── ANECDOTE ────────────────────────────────────────────────────────────
+
+model Anecdote {
+  id        String   @id @default(uuid())
+  content   String
+  isTrue    Boolean
   userId    String
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)

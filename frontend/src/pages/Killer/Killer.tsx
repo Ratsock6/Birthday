@@ -120,7 +120,7 @@ export default function Killer() {
       <div className={styles.waiting}>
         <span className={styles.icon}>🎯</span>
         <h2>La partie n'a pas encore commencé</h2>
-        <p>L'admin lancera la partie pendant la soirée.<br />Reste à l'affût !</p>
+        <p>L'admin lancera la partie pendant la journée.<br />Reste à l'affût !</p>
       </div>
     </div>
   );

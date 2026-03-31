@@ -1,3 +1,4 @@
+cat > src/pages/Admin/sections/RsvpSection.tsx << 'EOF'
 import { useEffect, useState } from 'react';
 import { api } from '../../../api/client';
 import styles from './Sections.module.scss';
@@ -159,3 +160,4 @@ export default function RsvpSection() {
     </div>
   );
 }
+EOF

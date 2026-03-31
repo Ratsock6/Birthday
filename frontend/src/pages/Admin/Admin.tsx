@@ -8,16 +8,18 @@ import MediaSection from './sections/MediaSection';
 import KillerSection from './sections/KillerSection';
 import QuestionnaireSection from './sections/QuestionnaireSection';
 import ScreensSection from './sections/ScreensSection';
+import AnecdotesSection from './sections/AnecdotesSection';
 import styles from './Admin.module.scss';
 
 const TABS = [
-  { id: 'rsvp',     label: '✅ RSVP'      },
-  { id: 'users',    label: '👥 Invités'   },
-  { id: 'food',     label: '🍽️ Régimes'  },
-  { id: 'media',    label: '📸 Médias'    },
-  { id: 'killer',   label: '🎯 Killer'    },
-  { id: 'quiz',     label: '📝 Quiz'      },
-  { id: 'screens',  label: '📺 Écrans'    },
+  { id: 'rsvp',       label: '✅ RSVP'      },
+  { id: 'users',      label: '👥 Invités'   },
+  { id: 'food',       label: '🍽️ Régimes'  },
+  { id: 'media',      label: '📸 Médias'    },
+  { id: 'killer',     label: '🎯 Killer'    },
+  { id: 'quiz',       label: '📝 Quiz'      },
+  { id: 'anecdotes',  label: '🎭 Anecdotes' },
+  { id: 'screens',    label: '📺 Écrans'    },
 ];
 
 export default function Admin() {
@@ -47,13 +49,14 @@ export default function Admin() {
       </div>
 
       <div className={styles.content}>
-        {tab === 'rsvp'    && <RsvpSection />}
-        {tab === 'users'   && <UsersSection />}
-        {tab === 'food'    && <FoodSection />}
-        {tab === 'media'   && <MediaSection />}
-        {tab === 'killer'  && <KillerSection />}
-        {tab === 'quiz'    && <QuestionnaireSection />}
-        {tab === 'screens' && <ScreensSection />}
+        {tab === 'rsvp'      && <RsvpSection />}
+        {tab === 'users'     && <UsersSection />}
+        {tab === 'food'      && <FoodSection />}
+        {tab === 'media'     && <MediaSection />}
+        {tab === 'killer'    && <KillerSection />}
+        {tab === 'quiz'      && <QuestionnaireSection />}
+        {tab === 'anecdotes' && <AnecdotesSection />}
+        {tab === 'screens'   && <ScreensSection />}
       </div>
     </div>
   );

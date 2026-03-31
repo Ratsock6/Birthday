@@ -9,6 +9,8 @@ import Media from './pages/Media/Media';
 import Killer from './pages/Killer/Killer';
 import Admin from './pages/Admin/Admin';
 import Questionnaire from './pages/Questionnaire/Questionnaire';
+import Anecdotes from './pages/Anecdotes/Anecdotes';
+import AnecdotesScreen from './pages/Screens/AnecdotesScreen';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const user = useAuthStore(s => s.user);
@@ -26,16 +28,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login"          element={<Login />} />
-        <Route path="/dashboard"      element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="/rsvp"           element={<PrivateRoute><Rsvp /></PrivateRoute>} />
-        <Route path="/food"           element={<PrivateRoute><Food /></PrivateRoute>} />
-        <Route path="/wall"           element={<PrivateRoute><Wall /></PrivateRoute>} />
-        <Route path="/media"          element={<PrivateRoute><Media /></PrivateRoute>} />
-        <Route path="/killer"         element={<PrivateRoute><Killer /></PrivateRoute>} />
-        <Route path="/questionnaire"  element={<PrivateRoute><Questionnaire /></PrivateRoute>} />
-        <Route path="/admin"          element={<AdminRoute><Admin /></AdminRoute>} />
-        <Route path="*"               element={<Navigate to="/dashboard" replace />} />
+        <Route path="/login"              element={<Login />} />
+        <Route path="/dashboard"          element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/rsvp"               element={<PrivateRoute><Rsvp /></PrivateRoute>} />
+        <Route path="/food"               element={<PrivateRoute><Food /></PrivateRoute>} />
+        <Route path="/wall"               element={<PrivateRoute><Wall /></PrivateRoute>} />
+        <Route path="/media"              element={<PrivateRoute><Media /></PrivateRoute>} />
+        <Route path="/killer"             element={<PrivateRoute><Killer /></PrivateRoute>} />
+        <Route path="/questionnaire"      element={<PrivateRoute><Questionnaire /></PrivateRoute>} />
+        <Route path="/anecdotes"          element={<PrivateRoute><Anecdotes /></PrivateRoute>} />
+        <Route path="/admin"              element={<AdminRoute><Admin /></AdminRoute>} />
+        <Route path="/screen/anecdotes"   element={<AdminRoute><AnecdotesScreen /></AdminRoute>} />
+        <Route path="*"                   element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </BrowserRouter>
   );
