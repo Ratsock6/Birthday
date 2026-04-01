@@ -33,7 +33,7 @@ export default function Admin() {
     <div className={styles.page}>
       <div className={styles.header}>
         <h1>Panel Admin 🎂</h1>
-        <button className={styles.logout} onClick={logout}>Déco</button>
+        <button className={styles.logout} onClick={logout}>Déconnexion</button>
       </div>
 
       <div className={styles.tabs}>
