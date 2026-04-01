@@ -70,7 +70,7 @@ export default function Dashboard() {
           <h1>Bonjour {user?.displayName} 👋</h1>
           <p>Anniversaire d'Antoine — 25 avril</p>
         </div>
-        <button className={styles.logout} onClick={logout}>Déco</button>
+        <button className={styles.logout} onClick={logout}>Déconnexion</button>
       </div>
 
       {/* Compte à rebours */}
